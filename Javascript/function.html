@@ -4,20 +4,33 @@
 	<meta charset="UTF-8">
 	<title>function</title>
 	<script>
-	var result;
-		//関数の定義
-		function getRandom(){
-			var randomint = Math.floor(Math.random()*6)+1;
-			result = randomint;
-		}
 
-		//関数の呼び出し
-		getRandom();
-		console.log(result);
+	
 
-
-
-
+	var func = function(){
+		var randomint = Math.floor(Math.random()*6)+1;
+		return randomint;
+	};
+	var result = func();
+	console.log(result);
+	func = function(radius){
+		var circleArea = Math.pow(radius, 2)*Math.PI;
+		return circleArea;
+	};
+	result = func(result);
+	console.log(result);
+	func = null;
+	console.log(func);
+	/*
+	var radius;
+	var result = getCircleArea(10);
+	
+	console.log(result);
+	function getCircleArea(radius){
+		var circleArea = Math.pow(radius, 2)*Math.PI;
+		return circleArea;
+	}
+	*/
 	</script>
 </head>
 <body>
