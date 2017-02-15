@@ -5,8 +5,27 @@
 	<title>function</title>
 	<script>
 
-	
 
+	function Product(name, version){
+		this.name = name;
+		this.version = version;
+	}
+	var first = new Product("神崎", "2");
+	var last = new Product("幸逸", "16");
+	console.log(first, last);
+	
+	/*
+	var obj = {x:1,y:1};
+	obj.getDistance = function(){
+		var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
+		return Math.sqrt(square);
+	}
+	console.log(obj.getDistance());
+	var obj2 = {x:1,y:Math.sqrt(3)};
+	obj2.getDistance = obj.getDistance;
+	console.log(obj2.getDistance());
+	*/
+	/*
 	var func = function(){
 		var randomint = Math.floor(Math.random()*6)+1;
 		return randomint;
@@ -21,6 +40,7 @@
 	console.log(result);
 	func = null;
 	console.log(func);
+	*/
 	/*
 	var radius;
 	var result = getCircleArea(10);
