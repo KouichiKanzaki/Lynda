@@ -5,6 +5,17 @@
 	<title>function</title>
 	<script>
 	/*
+	var point = polar(Math.SQRT2,45);
+	console.log(point.x, point.y);
+
+	function polar(radius, angle){
+		var radians = angle * Math.PI / 180;
+		var x = radians * Math.cos(radius);
+		var y = radians * Math.sin(radius);
+		return {x:x, y:y};
+	}
+	*/
+	/*
 	function includeNegative(array){
 		var count = array.length;
 		for (var i = 0; i < count; i++) {
@@ -113,8 +124,25 @@
 		return circleArea;
 	}
 	*/
+	function init(){
+		var icons = document.querySelector(".socialmediaicons");
+		var key = "facebook";
+		var element = createImg(key);
+		icons.innerHTML = "<ul><li>" + element + "</li></ul>";
+
+	}
+	function createImg(key){
+	var output = "<img"
+		+ " src=img/" + key + ".png"
+		+ " alt=" + key + "アイコン>"
+		return output;
+	}
+	window.onload = init;
 	</script>
 </head>
 <body>
+	<nav class="socialmediaicons"></nav>
+	<h1>神崎　幸逸</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </body>
 </html>
