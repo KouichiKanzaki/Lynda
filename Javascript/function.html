@@ -4,6 +4,23 @@
 	<meta charset="UTF-8">
 	<title>function</title>
 	<script>
+	function sum(){
+		var total = 0;
+		var count = arguments.length;
+		for(var i=0;i<count;i++){
+			total += arguments[i];
+		}
+		return total;
+	}
+	function ave(){
+		var count = arguments.length;
+		//aveのsumメソッドとして呼ぶ
+		var total = sum.apply(this, arguments);
+		return total / count;
+	}
+	console.log(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+	console.log(ave(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+	/*
 	function Point(x, y){
 		this.x = x;
 		this.y = y;
@@ -22,8 +39,7 @@
 	//var distance = Point.prototype.getDistanceFrom.call(obj, 0, 0);
 	var distance = Point.prototype.getDistanceFrom.apply(obj, [0, 0]);
 	console.log(distance);
-
-
+	*/
 	/*
 	function First(name, version){
 		this.name = name;
