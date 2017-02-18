@@ -4,16 +4,47 @@
 	<meta charset="UTF-8">
 	<title>function</title>
 	<script>
+	function Point(x, y){
+		this.x = x;
+		this.y = y;
+	}
+	Point.prototype.getDistanceFrom =
+	function(x, y){
+		var _x = this.x - x;
+		var _y = this.y - y;
+		var square = Math.pow(_x, 2) + Math.pow(_y, 2);
+		return Math.sqrt(square);
+	};
+	var myPoint = new Point(1, 1);
+	console.log(myPoint.getDistanceFrom(0, 0));
+	var obj = {x:1, y:Math.sqrt(3)};
+	//objのgetDistanceFromメソッドとして呼ぶ
+	//var distance = Point.prototype.getDistanceFrom.call(obj, 0, 0);
+	var distance = Point.prototype.getDistanceFrom.apply(obj, [0, 0]);
+	console.log(distance);
 
 
-	function Product(name, version){
+	/*
+	function First(name, version){
 		this.name = name;
 		this.version = version;
+		this.age = 35;
 	}
-	var first = new Product("神崎", "2");
-	var last = new Product("幸逸", "16");
-	console.log(first, last);
-	
+	function Last(name, version){
+		this.name = name;
+		this.version = version;
+		this.age = 36;
+	}
+	First.prototype.toString =
+	Last.prototype.toString =
+	function(){
+		return "[Object" + this.age + "]";
+	};
+	var first = new First("神崎", "2");
+	var last = new Last("幸逸", "16");
+	console.log(first.toString(), last.toString());
+	//alert(first);
+	*/
 	/*
 	var obj = {x:1,y:1};
 	obj.getDistance = function(){
@@ -44,7 +75,7 @@
 	/*
 	var radius;
 	var result = getCircleArea(10);
-	
+
 	console.log(result);
 	function getCircleArea(radius){
 		var circleArea = Math.pow(radius, 2)*Math.PI;
@@ -54,6 +85,6 @@
 	</script>
 </head>
 <body>
-	
+
 </body>
 </html>
