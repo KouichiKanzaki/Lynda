@@ -3,6 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>function</title>
+	<style media="screen">
+		.icon{
+			width: 50px;
+			height: 50px;
+		}
+	</style>
 	<script>
 	/*
 	var point = polar(Math.SQRT2,45);
@@ -123,18 +129,35 @@
 		var circleArea = Math.pow(radius, 2)*Math.PI;
 		return circleArea;
 	}
+	https://twitter.com/?lang=ja
+	https://www.youtube.com/?gl=JP&hl=ja
 	*/
+	var socialmedia = {
+		twitter:"https://twitter.com/?lang=ja",
+		youtube:"https://www.youtube.com/?gl=JP&hl=ja",
+		facebook:"https://ja-jp.facebook.com/"
+	}
 	function init(){
 		var icons = document.querySelector(".socialmediaicons");
-		var key = "facebook";
-		var element = createImg(key);
-		icons.innerHTML = "<ul><li>" + element + "</li></ul>";
-
+		var url = "https://ja-jp.facebook.com/";
+		var output = "<ul>";
+		for (var key in socialmedia) {
+			var url = socialmedia[key];
+			var element = createA(url, createImg(key));
+			output += "<li>" + element + "</li>"
+		}
+		output += "</ul>"
+		icons.innerHTML = output;
 	}
 	function createImg(key){
-	var output = "<img"
+	var output = "<img class='icon'"
 		+ " src=img/" + key + ".png"
 		+ " alt=" + key + "アイコン>"
+		return output;
+	}
+	function createA(url, child){
+		var output = "<a href=" + url + ">"
+			+ child + "</a>";
 		return output;
 	}
 	window.onload = init;

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function2</title>
+	<style media="screen">
+
+	</style>
+	<script>
+	var Point;
+	(function(){
+		function Point(x, y){
+			this.x = x;
+			this.y = y;
+		}
+		var p = Point.prototype;
+		p.getDistance = function(){
+			var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
+			return Math.sqrt(square);
+		};
+		p.add = function(x, y){
+			this.x += x;
+			this.y += y;
+		};
+		p.scale = function(scale){
+			this.x *= scale;
+			this.y *= scale;
+		};
+		this.Point = Point;
+	})();
+	// ______________________________________________
+	var point = new Point(2, 5);
+	point.add(3, -2);
+	point.scale(4);
+	console.log(point);
+	point.getDistance(3, 2);
+	console.log(point.getDistance());
+	console.log(p);
+	/*
+	var count = 0;
+	function countUp(){
+		var count = 10;
+		count++;
+		this.count++;
+		console.log(count);
+	}
+	countUp();
+	console.log(count);
+	*/
+	</script>
+</head>
+<body>
+</body>
+</html>
