@@ -6,36 +6,15 @@
 	<style media="screen">
 
 	</style>
+	<script src="script.js">
+	</script>
 	<script>
-	var Point;
-	(function(){
-		function Point(x, y){
-			this.x = x;
-			this.y = y;
-		}
-		var p = Point.prototype;
-		p.getDistance = function(){
-			var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
-			return Math.sqrt(square);
-		};
-		p.add = function(x, y){
-			this.x += x;
-			this.y += y;
-		};
-		p.scale = function(scale){
-			this.x *= scale;
-			this.y *= scale;
-		};
-		this.Point = Point;
-	})();
-	// ______________________________________________
-	var point = new Point(2, 5);
-	point.add(3, -2);
-	point.scale(4);
-	console.log(point);
-	point.getDistance(3, 2);
-	console.log(point.getDistance());
-	console.log(p);
+
+	var point = new myLib.Point(0);
+	var distance = point.add(3, -2)
+		.scale(4)
+		.getDistance();
+	console.log(distance);
 	/*
 	var count = 0;
 	function countUp(){
