@@ -6,11 +6,37 @@
 	<style media="screen">
 
 	</style>
-	<script src="script.js">
-	</script>
+	<!-- <script src="script.js">
+	</script> -->
 	<script>
+	function Point(x, y){
+		this.x = isNaN(x) ? 0 : x;
+		this.y = isNaN(y) ? 0 : y;
+	}
+	Point.prototype = {
+		get length(){
+			var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
+			return Math.sqrt(square);
+		},
+		get angle(){
+			return Math.atan2(this.y, this.x);
+		}
+	};
+	/*
+	Point.prototype.getLengh = function(){
+		var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
+		return Math.sqrt(square);
+	};
+	Point.prototype.getAngle = function(){
+		return Math.atan2(this.y, this.x);
+	};
 
-
+	var obj2 = new Point(1, 1);
+	//obj.x = 1;
+	//obj.y = 2;
+	*/
+	var obj = new Point(1, Math.sqrt(3));
+	console.log(obj.length, obj.angle * 180 / Math.PI);
 	</script>
 </head>
 <body>
