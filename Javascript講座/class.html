@@ -14,17 +14,28 @@
 		this.y = isNaN(y) ? 0 : y;
 		//console.log(this.x, this.y);
 	}
-	Point.prototype = {
-		get length(){
+
+	Object.defineProperties(Point.prototype, {
+		length: {get:function(){
 			var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
 			return Math.sqrt(square);
-		},
-		get angle(){
+		}},
+		angle: {get:function(){
 			return Math.atan2(this.y, this.x);
-		}
+		}}
+	});
+	//Point.prototype.constructor = Point;
+	Point.prototype.clone = function(){
+		var _clone = new this.constructor(this.x, this.y);
+		console.log(_clone);
+		return _clone;
 	};
-	Point.prototype.constructor = Point;
-	Point.RAD_TO_DEG = 180 / Math.PI;
+	Point.prototype.set = function(x, y){
+		this.x = isNaN(x) ? this.x : x;
+		this.y = isNaN(y) ? this.y : y;
+	};
+	//Point.RAD_TO_DEG = 180 / Math.PI;
+	Object.defineProperty(Point, "RAD_TO_DEG", {value: 180 / Math.PI});
 	Point.polar = function(radius, angle){
 		var x = radius * Math.cos(angle);
 		var y = radius * Math.sin(angle);
@@ -44,13 +55,38 @@
 		this.x *= scale;
 		this.y *= scale;
 	}
+
+	Vector.prototype.getDistance = function(_vector){
+		var _clone = this.clone();
+		_clone.add(-_vector.x, -_vector.y);
+		return _clone.length;
+	};
 	// __________________________________________________________
+	var obj = new Vector(0, Math.sqrt(3));
+	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
+	obj.set = (1, "A");
+	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
+	console.log(obj);
+	/*
+	console.log(Point.RAD_TO_DEG);
+	Point.RAD_TO_DEG = 1;
+	console.log(Point.RAD_TO_DEG);
+	*/
+	/*
+	var obj = new Vector(1);
+	var obj2 = new Vector(0, 1);
+	var obj3 = new Point(0, 0);
+	obj3.clone();
+	console.log(obj.getDistance(obj2));
+	*/
+	/*
 	var obj = new Vector(0.5);
 	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
 	obj.add(0.5, Math.sqrt(3));
 	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
 	obj.scale(2);
 	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
+	*/
 	/*
 	function myClass(){
 	}
