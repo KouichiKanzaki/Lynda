@@ -10,8 +10,29 @@
 	</script> -->
 	<script>
 	function Point(x, y){
-		this.x = isNaN(x) ? 0 : x;
-		this.y = isNaN(y) ? 0 : y;
+		var _x = 0;
+		var _y = 0;
+
+		Object.defineProperties(this, {
+			x: {
+				get: function(){
+					return _x;
+				},
+				set: function(x){
+					_x = isNaN(x) ? _x : x;
+				}
+			},
+			y: {
+				get: function(){
+					return _y;
+				},
+				set: function(y){
+					_y = isNaN(y) ? _y : y;
+				}
+			}
+		});
+		this.x = x;
+		this.y = y;
 		//console.log(this.x, this.y);
 	}
 
@@ -63,10 +84,16 @@
 	};
 	// __________________________________________________________
 	var obj = new Vector(0, Math.sqrt(3));
+	//console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
+	//obj.set = (1, "A");
 	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
-	obj.set = (1, "A");
+	//obj.add(1, "test");
+	console.log(obj.x, obj.y);
 	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
-	console.log(obj);
+	obj.x = "test";
+	obj.scale(2);
+	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
+	console.log(obj, obj._x);
 	/*
 	console.log(Point.RAD_TO_DEG);
 	Point.RAD_TO_DEG = 1;
