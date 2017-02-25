@@ -6,94 +6,22 @@
 	<style media="screen">
 
 	</style>
+	<script src="Point.js"></script>
+	<script src="Vector.js"></script>
 	<!-- <script src="script.js">
 	</script> -->
 	<script>
-	function Point(x, y){
-		var _x = 0;
-		var _y = 0;
 
-		Object.defineProperties(this, {
-			x: {
-				get: function(){
-					return _x;
-				},
-				set: function(x){
-					_x = isNaN(x) ? _x : x;
-				}
-			},
-			y: {
-				get: function(){
-					return _y;
-				},
-				set: function(y){
-					_y = isNaN(y) ? _y : y;
-				}
-			}
-		});
-		this.x = x;
-		this.y = y;
-		//console.log(this.x, this.y);
-	}
 
-	Object.defineProperties(Point.prototype, {
-		length: {get:function(){
-			var square = Math.pow(this.x, 2) + Math.pow(this.y, 2);
-			return Math.sqrt(square);
-		}},
-		angle: {get:function(){
-			return Math.atan2(this.y, this.x);
-		}}
-	});
-	//Point.prototype.constructor = Point;
-	Point.prototype.clone = function(){
-		var _clone = new this.constructor(this.x, this.y);
-		console.log(_clone);
-		return _clone;
-	};
-	Point.prototype.set = function(x, y){
-		this.x = isNaN(x) ? this.x : x;
-		this.y = isNaN(y) ? this.y : y;
-	};
-	//Point.RAD_TO_DEG = 180 / Math.PI;
-	Object.defineProperty(Point, "RAD_TO_DEG", {value: 180 / Math.PI});
-	Point.polar = function(radius, angle){
-		var x = radius * Math.cos(angle);
-		var y = radius * Math.sin(angle);
-		return new Point(x, y);
-	};
-	function Vector(x, y){
-		Point.call(this, x, y);
-	}
-	//Vector.prototype = new Point();
-	Vector.prototype = Object.create(Point.prototype);
-	Vector.prototype.constructor = Vector;
-	Vector.prototype.add = function(x, y){
-		this.x += x;
-		this.y += y;
-	}
-	Vector.prototype.scale = function(scale){
-		this.x *= scale;
-		this.y *= scale;
-	}
-
-	Vector.prototype.getDistance = function(_vector){
-		var _clone = this.clone();
-		_clone.add(-_vector.x, -_vector.y);
-		return _clone.length;
-	};
 	// __________________________________________________________
-	var obj = new Vector(0, Math.sqrt(3));
-	//console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
-	//obj.set = (1, "A");
+	var obj = new Vector(1, Math.sqrt(3));
 	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
-	//obj.add(1, "test");
-	console.log(obj.x, obj.y);
-	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
-	obj.x = "test";
-	obj.scale(2);
-	console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
-	console.log(obj, obj._x);
+	console.log(obj);
+	/*
+	proto.scale = function(arg){
+		alert(arg);
+	}
+	*/
 	/*
 	console.log(Point.RAD_TO_DEG);
 	Point.RAD_TO_DEG = 1;
