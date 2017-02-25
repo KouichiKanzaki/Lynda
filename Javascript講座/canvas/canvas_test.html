@@ -5,35 +5,63 @@
 <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
 <title>canvas_test</title>
+<script>
+	function init(){
+		var canvasElement = document.getElementById("myCanvas");
+		var context2D = canvasElement.getContext("2d");
+		draw(context2D);
+	}
+	function draw(context2D){
+		context2D.beginPath();
+		//色設定
+		context2D.strokeStyle = "red";
+		context2D.fillStyle = "green";
+		//線を書く
+		drawStar(context2D, 100, 100, 5, 80, 30);
+		//drawRect(context2D, 10, 10, 100, 100);
+		context2D.closePath();
+		//表示
+		context2D.fill();
+		context2D.stroke();
+
+
+		/*
+		context2D.fillStyle = "blue";
+		context2D.fillRect(10, 10, 100, 100);
+		*/
+	}
+	function drawStar(context2D,  nX, nY, numVertex, longRadius, shortRadius){
+		var nTheta = Math.PI / numVertex;
+		var nRadians = -Math.PI / 2;
+		context2D.moveTo(nX, nY - longRadius);
+		for(var i=0;i<numVertex;i++){
+			//山
+			nRadians += nTheta;
+			context2D.lineTo(shortRadius * Math.cos(nRadians) + nX, shortRadius * Math.sin(nRadians) + nY);
+			//谷
+			nRadians += nTheta;
+			context2D.lineTo(longRadius * Math.cos(nRadians) + nX, longRadius * Math.sin(nRadians) + nY);
+		}
+	}
+	function drawRect(context2D, nX, nY, nWidth, nHeight){
+		context2D.moveTo(nX, nY);
+		context2D.lineTo(nX + nWidth, nY);
+		context2D.lineTo(nX + nWidth, nY + nHeight);
+		context2D.lineTo(nX, nY + nHeight);
+		context2D.lineTo(nX, nY);
+
+	}
+</script>
 </head>
 <style>
 	canvas {border: 1px solid #000;}
 </style>
-<body>
+<body onLoad="init()">
 <h3>kouichi</h3>
 	<!-- <button type="button" onclick="rand()">名前</button> -->
-	<canvas id="myCanvas" width="240" height="180"></canvas>
+	<canvas id="myCanvas" width="400" height="300"></canvas>
 </body>
 <script>
-	/*
-	var 名前 = "kanzaki";
 	
-	document.write(名前);
-	
-	function rand(){
-		ランダム = Math.floor(Math.random()*6+1);
-		alert(ランダム);
-	}
-	var myArray = [10,20,30];
-
-	var a = myArray[1];
-	myArray[1] = "k";
-	myArray[3] = "a";
-	console.log(myArray,a);
-	
-	var mydate = new Date();
-	var day = mydate.getalert("");Day();
-	alert(day);
-	*/
 </script>
 </html>
