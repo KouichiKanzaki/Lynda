@@ -82,27 +82,64 @@ var Vector = (function (_super) {
     };
     return Vector;
 }(Point));
-var matrix = [
-    [1, 2, 3],
-    [1, 2, 3]
+var Point3D = (function () {
+    function Point3D(x, y, z) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        if (z === void 0) { z = 0; }
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    return Point3D;
+}());
+var x = 3;
+var y = 4;
+var point = {
+    x: 1,
+    y: Math.sqrt(3),
+    start: function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(Math.sqrt(_this.x * _this.x + _this.y * _this.y));
+        }, 100);
+    }
+};
+point.start();
+/*
+let value = new Point();
+value = new Vector();
+value = {x:0,y:1};
+value = new Point3D(0,0,0);
+*/
+/*
+let getInfo: (x: number, y: number) => number;
+getInfo = (x: number, y: number):number => Math.sqrt(x*x+y*y);
+console.log(getInfo(1,1));
+*/
+/*
+let matrix: any[][] = [
+    [1,2,3],
+    [1,2,3]
 ];
-function sumMatrix(matrix) {
-    var sum = 0;
-    var j = 100;
-    for (var i = 0; i < matrix.length; i++) {
-        var currentRow = matrix[i];
-        var j_1 = 200;
-        for (var i_1 = 0; i_1 < currentRow.length; i_1++) {
-            var j_2 = 300;
-            sum += currentRow[i_1];
-            console.log(i_1, currentRow[i_1], j_2);
+function sumMatrix(matrix: number[][]): number{
+    let sum:number = 0;
+    const j: number = 100;
+    for(let i: number = 0;i<matrix.length;i++){
+         let currentRow: number[] = matrix[i];
+         const j: number = 200;
+        for(let i: number = 0;i<currentRow.length;i++){
+            const j: number = 300;
+            sum += currentRow[i];
+            console.log(i, currentRow[i], j);
         }
-        console.log(j_1);
+        console.log(j);
     }
     console.log(j);
     return sum;
 }
 console.log(sumMatrix(matrix));
+*/
 /*
 for(let i:number = 0;i<5;i++){
         setTimeout(function(): void{
@@ -112,7 +149,7 @@ for(let i:number = 0;i<5;i++){
 console.log("i = " +i);
 */
 //const RAD_TO_DEG: number = 180 / Math.PI;
-//var obj: Vector = new Vector(1, Math.sqrt(3));
+//var obj: Point = new Point3D(1, 2, 3);
 //console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
 //console.log(Point.getPolar(Math.SQRT2, Math.PI / 4));
 /*

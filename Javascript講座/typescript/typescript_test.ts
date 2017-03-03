@@ -2,7 +2,6 @@ class Point implements IPoint{
     //static RAD_TO_DEG: number = 180 / Math.PI;
     constructor(public x: number = 0, public y: number = 0){
     }
-    /*
     set length(length: number){
         var point: IPoint = Point.getPolar(length, this.angle);
         this.x = point.x;
@@ -32,7 +31,6 @@ class Point implements IPoint{
     static get RAD_TO_DEG(): number {
         return 180 / Math.PI; 
     }
-    */
 }
 class Vector extends Point{
     constructor(x: number = 0, y: number = 0){
@@ -59,10 +57,31 @@ interface IPoint{
     x: number;
     y: number;
 }
+let x: number = 3;
+let y: number = 4;
+let point = {
+    x: 1,
+    y: Math.sqrt(3),
+    start: function(): void{
+        setTimeout((): void => {
+            console.log(Math.sqrt(this.x * this.x + this.y * this.y));
+        },100);
+    }
+}
+point.start();
+
+
+/*
 let value = new Point();
 value = new Vector();
 value = {x:0,y:1};
 value = new Point3D(0,0,0);
+*/
+/*
+let getInfo: (x: number, y: number) => number;
+getInfo = (x: number, y: number):number => Math.sqrt(x*x+y*y);
+console.log(getInfo(1,1));
+*/
 /*
 let matrix: any[][] = [
     [1,2,3],
@@ -95,7 +114,7 @@ for(let i:number = 0;i<5;i++){
 console.log("i = " +i);
 */
 //const RAD_TO_DEG: number = 180 / Math.PI;
-var obj: Point = new Point3D(1, 2, 3);
+//var obj: Point = new Point3D(1, 2, 3);
 //console.log(obj.length, obj.angle * Point.RAD_TO_DEG);
 //console.log(Point.getPolar(Math.SQRT2, Math.PI / 4));
 /*
