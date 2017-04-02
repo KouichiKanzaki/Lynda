@@ -39,7 +39,7 @@ gulp.task("concat",function(){
 gulp.task("sass",function(){
 	gulp.src(['sass/*.scss'])
 	.pipe(sass())
-	.pipe(gulp.dest("css/"));
+	.pipe(gulp.dest("sass"));
 });
 
 //autoprefixer
